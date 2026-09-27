@@ -256,7 +256,14 @@
     border: 1px solid rgba(32, 70, 84, 0.1);
     border-radius: var(--radius-md);
 }
-.avatar-info-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--color-white); box-shadow: 0 4px 12px rgba(32, 70, 84, 0.15); }
+.avatar-info-card img, .avatar-info-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--color-white); box-shadow: 0 4px 12px rgba(32, 70, 84, 0.15); }
+/* lingkaran inisial: dipakai saat foto Gravatar tidak ada (fallback dari email) */
+.avatar-initial {
+    border-radius: 50%; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--color-teal); color: var(--color-mist);
+    font-weight: 700; letter-spacing: 0.5px;
+}
 .not-logged-banner {
     background: rgba(255, 200, 200, 0.35);
     border: 1px solid rgba(200, 80, 80, 0.3);

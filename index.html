@@ -342,9 +342,7 @@
 
                     <!-- Kartu info akun (tampil otomatis kalau sudah masuk) -->
                     <div id="userInfoCard" class="avatar-info-card mb-4 d-none">
-                        <img id="userAvatarDisplay"
-                             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
-                             alt="Avatar">
+                        <div id="userAvatarWrap"></div>
                         <div class="flex-grow-1">
                             <h6 id="userNameDisplay" class="fw-bold mb-0">Pengguna</h6>
                             <p class="small text-muted mb-0">Nama akan otomatis dipakai sebagai nama pengunggah.</p>
@@ -359,14 +357,20 @@
                             <input type="text" id="inputNamaPengalaman" class="form-control rounded-3" placeholder="Nama kamu" required>
                         </div>
 
-                        <!-- DESTINASI & RATING -->
+                        <!-- DAERAH, DESTINASI & RATING -->
                         <div class="row g-3 mb-3">
-                            <div class="col-md-8">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Daerah <span class="text-danger">*</span></label>
+                                <select id="inputDaerahPengalaman" class="form-select rounded-3" required>
+                                    <option value="" selected disabled>Memuat daerah...</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
                                 <label class="form-label small fw-semibold">Destinasi yang Dikunjungi <span class="text-danger">*</span></label>
                                 <input type="text" id="inputDestinasiPengalaman" class="form-control rounded-3"
                                        placeholder="Misal: Danau Lut Tawar, Takengon" required>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="form-label small fw-semibold">Rating <span class="text-danger">*</span></label>
                                 <select id="inputRatingPengalaman" class="form-select rounded-3" required>
                                     <option value="5" selected>★★★★★ (5.0)</option>

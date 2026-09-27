@@ -84,10 +84,12 @@ export async function toggleFavorit(user, kulinerId) {
 
 /* ---------- pengalaman wisatawan (unggah publik: foto + cerita) ---------- */
 export const daftarPengalaman = async () => cek(await supabase.from('pengalaman')
-  .select('id,nama,teks,foto,created_at').order('created_at', { ascending: false }).limit(12));
-export async function unggahPengalaman(nama, teks, fotoFile) {
+  .select('id,nama,teks,foto,email,daerah(nama_daerah,slug),created_at').order('created_at', { ascending: false }).limit(12));
+export async function unggahPengalaman(nama, teks, fotoFile, daerahId, email) {
   const ext = fotoFile.name.split('.').pop();
   const path = `pengalaman/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
   cek(await supabase.storage.from('gambar').upload(path, fotoFile));
-  return cek(await supabase.from('pengalaman').insert({ nama, teks, foto: path }).select().single());
+  return cek(await supabase.from('pengalaman')
+    .insert({ nama, teks, foto: path, daerah_id: daerahId || null, email: email || null })
+    .select('*, daerah(nama_daerah,slug)').single());
 }

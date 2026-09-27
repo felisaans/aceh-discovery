@@ -1,6 +1,6 @@
 import { siap } from '../supabase-client.js';
 import { daftarPengalaman, unggahPengalaman, imgUrl, kulinerUnggulan, budayaUnggulan, daftarBerita, daftarDaerah, penggunaAktif } from '../api.js';
-import { esc, pasangNavbar } from '../ui.js';
+import { esc, pasangNavbar, avatarHtml } from '../ui.js';
 import { cardMini, pasangChipDaerah, pesanSetup, pesanMuat } from '../components.js';
 
 const $ = (id) => document.getElementById(id);
@@ -11,8 +11,6 @@ const chipWadah = $('filterDaerahChips');
 const inner = $('carouselPengalamanInner');
 const form = $('formPengalaman');
 const modalEl = $('modalUnggahPengalaman');
-
-const DEFAULT_AVATAR = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80';
 
 const filterKuliner = (target) => {
   document.querySelectorAll('.kuliner-populer-item').forEach(item => {
@@ -47,7 +45,7 @@ function deteksiLuminance(url) {
 }
 
 /* ---------- kartu carousel pengalaman wisatawan (desain kartu editorial baru) ---------- */
-async function buatSlide({ nama, teks, foto }) {
+async function buatSlide({ nama, teks, foto, daerah, email }) {
   const cls = await deteksiLuminance(foto);
   const item = document.createElement('div');
   item.className = 'carousel-item';
@@ -55,14 +53,14 @@ async function buatSlide({ nama, teks, foto }) {
     <div class="experience-card ${cls}" style="background-image: url('${esc(foto)}');">
       <div class="experience-overlay"></div>
       <div class="experience-header">
-        <span class="experience-tag"><i class="fa-solid fa-location-dot me-1"></i> Aceh</span>
+        <span class="experience-tag"><i class="fa-solid fa-location-dot me-1"></i> ${esc(daerah || 'Aceh')}</span>
       </div>
       <div class="experience-body">
         <div class="experience-glass-panel">
           <p class="experience-quote">"${esc(teks)}"</p>
           <div class="experience-footer">
             <div class="experience-user">
-              <img src="${DEFAULT_AVATAR}" alt="${esc(nama)}" class="experience-avatar">
+              ${avatarHtml(nama, email, 52, 'experience-avatar')}
               <div>
                 <h6 class="experience-user-name mb-0">${esc(nama)}</h6>
                 <p class="experience-user-role m-0">Wisatawan</p>
@@ -135,6 +133,11 @@ if (!siap) {
         </div>`).join('') : '<p class="text-center text-muted py-4 w-100">Belum ada berita.</p>';
 
       pasangChipDaerah(chipWadah, daerah.filter(d => d.slug !== 'semua'), filterKuliner);
+
+      /* dropdown daerah pada form "Bagikan Pengalaman" */
+      const selDaerah = $('inputDaerahPengalaman');
+      if (selDaerah) selDaerah.innerHTML = '<option value="" selected disabled>Pilih daerah...</option>' +
+        daerah.map(d => `<option value="${d.id}">${esc(d.nama_daerah)}</option>`).join('');
     } catch (e) {
       console.error('Gagal memuat konten beranda:', e);
       [kWadah, bWadah, beritaWadah].forEach(el => el.innerHTML = '<p class="text-center text-danger py-4 w-100">Gagal memuat data. Coba muat ulang halaman.</p>');
@@ -150,7 +153,7 @@ if (!siap) {
       const dibalik = data.slice().reverse();
       for (let i = 0; i < dibalik.length; i++) {
         const item = dibalik[i];
-        const slide = await buatSlide({ nama: item.nama, teks: item.teks, foto: imgUrl(item.foto) });
+        const slide = await buatSlide({ nama: item.nama, teks: item.teks, foto: imgUrl(item.foto), daerah: item.daerah?.nama_daerah, email: item.email });
         if (i === dibalik.length - 1) slide.classList.add('active');
         inner.appendChild(slide);
       }
@@ -167,6 +170,7 @@ if (!siap) {
     $('grupNamaPengalaman').classList.add('d-none');
     $('inputNamaPengalaman').required = false;
     $('inputNamaPengalaman').value = nama;
+    $('userAvatarWrap').innerHTML = avatarHtml(nama, user.email, 56, 'avatar-info-avatar');
   })();
 
   /* ---------- Dropzone upload foto (klik atau seret & lepas) ---------- */
@@ -214,11 +218,14 @@ if (!siap) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nama = $('inputNamaPengalaman').value.trim();
+    const selDaerah = $('inputDaerahPengalaman');
+    const daerahId = selDaerah.value;
+    const daerahNama = selDaerah.selectedOptions[0]?.textContent || '';
     const destinasi = $('inputDestinasiPengalaman').value.trim();
     const rating = +$('inputRatingPengalaman').value;
     const cerita = $('inputTeksPengalaman').value.trim();
     const file = fileInput.files[0];
-    if (!nama || !destinasi || !cerita || !file) return;
+    if (!nama || !daerahId || !destinasi || !cerita || !file) return;
 
     const teks = `\u{1F4CD} ${destinasi} \u2014 ${'\u2605'.repeat(rating)}${'\u2606'.repeat(5 - rating)}\n\n${cerita}`;
 
@@ -230,15 +237,15 @@ if (!siap) {
     progressText.textContent = 'Mengunggah foto...';
     try {
       progressBar.style.width = '70%';
-      const hasil = await unggahPengalaman(nama, teks, file);
+      const user = await penggunaAktif();
+      const hasil = await unggahPengalaman(nama, teks, file, daerahId, user?.email || null);
       progressBar.style.width = '100%';
       progressText.textContent = 'Selesai!';
-      await tambahSlideAktif({ nama: hasil.nama, teks: hasil.teks, foto: imgUrl(hasil.foto) });
+      await tambahSlideAktif({ nama: hasil.nama, teks: hasil.teks, foto: imgUrl(hasil.foto), daerah: hasil.daerah?.nama_daerah || daerahNama, email: hasil.email });
       form.reset();
       preview.classList.add('d-none');
       dropzone.classList.remove('d-none');
       previewBg.style.backgroundImage = '';
-      const user = await penggunaAktif();
       if (user) $('inputNamaPengalaman').value = $('userNameDisplay').textContent;
       setTimeout(() => { progressWrap.classList.add('d-none'); progressBar.style.width = '0%'; }, 400);
       bootstrap.Modal.getInstance(modalEl).hide();
