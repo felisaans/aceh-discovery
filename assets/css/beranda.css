@@ -1,0 +1,280 @@
+/* ==========================================================================
+   BERANDA — editorial travel-magazine homepage (redesign terbaru)
+   Token, navbar, tombol, footer & region-chip bersama ada di style.css
+   ========================================================================== */
+
+/* HERO */
+.hero-editorial {
+    padding: 160px 0 90px 0;
+    background: radial-gradient(circle at 80% 20%, var(--color-sky-light) 0%, var(--color-mist) 60%);
+}
+.hero-tag-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background-color: var(--color-white);
+    padding: 8px 20px; border-radius: var(--radius-pill);
+    font-size: 0.85rem; font-weight: 600; color: var(--color-teal);
+    box-shadow: 0 4px 20px rgba(32, 70, 84, 0.06);
+    border: 1px solid rgba(32, 70, 84, 0.08);
+    margin-bottom: 24px;
+}
+.tag-dot { width: 8px; height: 8px; background-color: var(--color-meadow); border: 1px solid var(--color-teal); border-radius: 50%; }
+.hero-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.12;
+    color: var(--color-teal);
+    margin-bottom: 24px;
+}
+.hero-heading em {
+    font-style: italic;
+    background: linear-gradient(120deg, var(--color-teal) 0%, var(--color-meadow) 100%);
+    background-clip: text; -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+.hero-description { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+.search-box-pill {
+    background-color: var(--color-white);
+    border-radius: 60px;
+    padding: 8px 10px 8px 20px;
+    box-shadow: 0 15px 35px rgba(32, 70, 84, 0.08);
+    border: 1px solid rgba(32, 70, 84, 0.12);
+    max-width: 540px;
+}
+.search-box-pill .form-control { border: none; box-shadow: none; background: transparent; color: var(--color-teal); }
+.hero-visual-container { position: relative; padding: 20px; }
+.hero-main-frame {
+    width: 100%; aspect-ratio: 4/5;
+    border-radius: 200px 30px 30px 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    border: 4px solid var(--color-white);
+}
+.hero-main-frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero-floating-card {
+    position: absolute; bottom: -15px; left: -20px;
+    background: var(--color-white);
+    padding: 16px 24px; border-radius: var(--radius-md);
+    box-shadow: 0 15px 35px rgba(32, 70, 84, 0.12);
+    display: flex; align-items: center; gap: 16px;
+    max-width: 290px;
+    border-left: 4px solid var(--color-meadow);
+}
+.floating-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background-color: var(--color-sky-light);
+    color: var(--color-teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+}
+.hero-badge-top {
+    position: absolute; top: 40px; right: -10px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px; border-radius: var(--radius-pill);
+    font-size: 0.85rem; font-weight: 700;
+    box-shadow: 0 10px 25px rgba(32, 70, 84, 0.08);
+    color: var(--color-teal);
+    border: 1px solid var(--color-sky);
+}
+
+/* BERITA TICKER (ringkas, dari Supabase) */
+.section-berita { padding: 50px 0 10px; }
+.news-ticker-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(32, 70, 84, 0.08);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.news-ticker-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+/* FEATURED */
+.section-featured-stories { padding: 100px 0; background-color: var(--color-mist); }
+.featured-block {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border: 1px solid rgba(32, 70, 84, 0.08);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.featured-block:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.featured-img-frame { border-radius: var(--radius-md); overflow: hidden; height: 100%; min-height: 340px; position: relative; }
+.featured-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+.badge-featured-category {
+    position: absolute; top: 20px; left: 20px;
+    background: var(--color-teal); color: var(--color-meadow);
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding: 6px 16px; border-radius: var(--radius-pill);
+    z-index: 2;
+}
+.badge-featured-category.accent-sky { background: var(--color-teal); color: var(--color-sky); }
+.featured-title { font-family: var(--font-heading); font-size: clamp(1.7rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--color-teal); line-height: 1.25; margin-bottom: 16px; }
+.featured-excerpt { font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px; }
+.featured-meta { display: flex; gap: 20px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 28px; }
+.featured-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* DISCOVER */
+.section-discover { padding: 90px 0; background-color: var(--color-sky-light); border-top: 1px solid rgba(169, 224, 241, 0.5); border-bottom: 1px solid rgba(169, 224, 241, 0.5); }
+.section-discover-budaya { padding: 90px 0; background-color: var(--color-mist); }
+.discovery-card-modern {
+    background: var(--color-white);
+    border-radius: var(--radius-md); overflow: hidden;
+    border: 1px solid rgba(32, 70, 84, 0.08);
+    box-shadow: var(--shadow-soft);
+    height: 100%; display: flex; flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.discovery-card-modern:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+.discovery-img-wrapper { position: relative; height: 220px; overflow: hidden; }
+.discovery-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.card-category-tag {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(32, 70, 84, 0.9);
+    color: var(--color-mist);
+    padding: 5px 14px; border-radius: var(--radius-pill);
+    font-size: 0.75rem; font-weight: 600;
+    z-index: 2;
+}
+.card-category-tag.tag-budaya { background: rgba(202, 255, 166, 0.92); color: var(--color-teal); }
+.card-title-link { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--color-teal); text-decoration: none; }
+
+/* EDITORIAL IDENTITY */
+.section-editorial-identity { padding: 100px 0; background-color: var(--color-teal); color: var(--color-mist); border-radius: 40px; margin: 40px 0; overflow: hidden; }
+.collage-wrapper { position: relative; padding: 20px; }
+.collage-main { width: 90%; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+.collage-main img { width: 100%; height: 450px; object-fit: cover; }
+.collage-sub { position: absolute; bottom: -20px; right: 10px; width: 55%; border-radius: var(--radius-md); overflow: hidden; border: 6px solid var(--color-teal); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); }
+.collage-sub img { width: 100%; height: 220px; object-fit: cover; }
+.identity-bullet { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+.identity-bullet-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--color-meadow); color: var(--color-teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* EXPERIENCE */
+.section-community { padding: 90px 0; background-color: var(--color-mist); }
+.experience-card {
+    position: relative; min-height: 520px;
+    border-radius: var(--radius-lg); overflow: hidden;
+    background-size: cover; background-position: center;
+    box-shadow: var(--shadow-hover);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.experience-card.is-dark {
+    --experience-text: #FFFFFF;
+    --experience-muted: rgba(255, 255, 255, 0.9);
+    --experience-overlay-bg: linear-gradient(180deg, rgba(21, 48, 59, 0.10) 0%, rgba(21, 48, 59, 0.35) 55%, rgba(21, 48, 59, 0.55) 100%);
+    --experience-glass-bg: rgba(21, 48, 59, 0.18);
+    --experience-glass-border: rgba(255, 255, 255, 0.25);
+    --experience-pill-bg: rgba(255, 255, 255, 0.15);
+}
+.experience-card.is-light {
+    --experience-text: var(--color-teal);
+    --experience-muted: rgba(32, 70, 84, 0.9);
+    --experience-overlay-bg: linear-gradient(180deg, rgba(247, 249, 225, 0.08) 0%, rgba(247, 249, 225, 0.35) 55%, rgba(247, 249, 225, 0.55) 100%);
+    --experience-glass-bg: rgba(255, 255, 255, 0.18);
+    --experience-glass-border: rgba(255, 255, 255, 0.4);
+    --experience-pill-bg: rgba(255, 255, 255, 0.25);
+}
+.experience-overlay { position: absolute; inset: 0; background: var(--experience-overlay-bg); z-index: 1; pointer-events: none; }
+.experience-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; }
+.experience-tag {
+    background: var(--experience-glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--experience-glass-border);
+    color: var(--experience-text);
+    padding: 8px 18px; border-radius: var(--radius-pill);
+    font-size: 0.85rem; font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.experience-body { position: relative; z-index: 2; margin-top: auto; }
+.experience-glass-panel {
+    background: var(--experience-glass-bg);
+    backdrop-filter: blur(8px) saturate(140%);
+    border: 1px solid var(--experience-glass-border);
+    border-radius: var(--radius-md);
+    padding: 2.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.experience-quote {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    font-style: italic;
+    color: var(--experience-text);
+    line-height: 1.55; margin-bottom: 1.5rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.experience-card.is-dark .experience-user-name,
+.experience-card.is-dark .experience-user-role { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
+.experience-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--experience-glass-border); padding-top: 1.25rem; }
+.experience-user { display: flex; align-items: center; gap: 1rem; }
+.experience-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--color-meadow); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+.experience-user-name { font-weight: 700; font-size: 1.05rem; color: var(--experience-text); margin: 0; }
+.experience-user-role { font-size: 0.85rem; color: var(--experience-muted); margin: 0; }
+.experience-rating { display: flex; align-items: center; gap: 4px; color: #FFB800; background: var(--experience-pill-bg); padding: 6px 14px; border-radius: var(--radius-pill); font-size: 0.88rem; border: 1px solid var(--experience-glass-border); }
+.carousel-nav-btn {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--color-white);
+    border: 1.5px solid rgba(32, 70, 84, 0.15);
+    color: var(--color-teal);
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-soft);
+}
+.carousel-nav-btn:hover { background: var(--color-teal); color: var(--color-meadow); border-color: var(--color-teal); }
+
+/* CTA */
+.section-closing-cta {
+    position: relative; padding: 120px 0;
+    background: linear-gradient(rgba(32, 70, 84, 0.85), rgba(32, 70, 84, 0.92)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover; background-position: center;
+    background-attachment: fixed;
+    color: var(--color-mist);
+    border-radius: 40px 40px 0 0;
+}
+.cta-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700; margin-bottom: 20px; color: var(--color-mist); }
+
+/* MODAL UNGGAH PENGALAMAN */
+.upload-dropzone {
+    border: 2px dashed rgba(32, 70, 84, 0.25);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: rgba(247, 249, 225, 0.4);
+}
+.upload-dropzone:hover, .upload-dropzone.dragover { border-color: var(--color-teal); background: rgba(169, 224, 241, 0.25); }
+.upload-dropzone i { font-size: 2rem; color: var(--color-teal); margin-bottom: 0.5rem; }
+.avatar-info-card {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(169, 224, 241, 0.35), rgba(202, 255, 166, 0.25));
+    border: 1px solid rgba(32, 70, 84, 0.1);
+    border-radius: var(--radius-md);
+}
+.avatar-info-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--color-white); box-shadow: 0 4px 12px rgba(32, 70, 84, 0.15); }
+.not-logged-banner {
+    background: rgba(255, 200, 200, 0.35);
+    border: 1px solid rgba(200, 80, 80, 0.3);
+    color: #8B2020;
+    padding: 0.85rem 1.15rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 991px) {
+    .hero-visual-container { margin-top: 40px; }
+    .collage-sub { position: relative; bottom: 0; right: 0; width: 100%; margin-top: 15px; }
+    .collage-main { width: 100%; }
+    .featured-block { padding: 24px; }
+}
+@media (max-width: 767.98px) {
+    .experience-card { min-height: 460px; padding: 1.25rem; }
+    .experience-glass-panel { padding: 1.25rem; }
+    .experience-quote { font-size: 1.05rem; }
+    .experience-footer { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,86 @@
+/* ==========================================================================
+   BUDAYA — pusaka & kesenian, bingkai ornate berselang-seling (redesign terbaru)
+   Token, navbar, tombol, footer bersama ada di style.css
+   ========================================================================== */
+
+body { background-image: radial-gradient(rgba(169, 224, 241, 0.35) 0.75px, transparent 0.75px); background-size: 24px 24px; }
+h4, h5 { font-family: var(--font-heading); }
+
+/* PAGE HERO */
+.page-hero {
+    padding: 160px 0 60px;
+    background: radial-gradient(circle at 80% 20%, var(--color-sky-light) 0%, var(--color-mist) 60%);
+    text-align: center;
+}
+.hero-tag-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background-color: var(--color-white); padding: 8px 20px;
+    border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600;
+    color: var(--color-teal); box-shadow: 0 4px 20px rgba(32,70,84,0.06);
+    border: 1px solid rgba(32,70,84,0.08); margin-bottom: 24px;
+}
+.tag-dot { width: 8px; height: 8px; background-color: var(--color-meadow); border: 1px solid var(--color-teal); border-radius: 50%; }
+.page-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700; line-height: 1.12; color: var(--color-teal);
+    margin-bottom: 22px; letter-spacing: -0.5px;
+}
+.page-hero h1 em {
+    font-style: italic;
+    background: linear-gradient(120deg, var(--color-teal) 0%, var(--color-meadow) 100%);
+    background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+.page-hero p.lead-custom { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; max-width: 640px; margin: 0 auto; }
+
+/* Ornate divider */
+.ornate-divider { display: flex; align-items: center; justify-content: center; color: var(--color-teal); margin: 25px 0; }
+.ornate-divider::before, .ornate-divider::after { content: ''; flex: 1; border-bottom: 2px dashed var(--color-sky); opacity: 0.6; margin: 0 15px; }
+
+/* Circular frame */
+.ornate-frame-circle {
+    width: 240px; height: 240px; border-radius: 50%; padding: 8px;
+    background: linear-gradient(135deg, var(--color-teal), var(--color-sky));
+    box-shadow: 0 15px 35px rgba(32,70,84,0.2);
+    margin: 0 auto; position: relative;
+    transition: transform 0.4s ease;
+}
+.ornate-frame-circle:hover { transform: scale(1.03) rotate(-2deg); }
+.ornate-frame-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 5px solid var(--color-white); }
+
+/* Banner frame */
+.ornate-frame-banner {
+    border: 3px solid var(--color-sky);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    background: var(--color-white);
+    box-shadow: 0 8px 25px rgba(32,70,84,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ornate-frame-banner:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.ornate-frame-banner img { width: 100%; height: 240px; object-fit: cover; border-radius: 18px; }
+
+.badge-budaya {
+    display: inline-flex; align-items: center;
+    background: rgba(202, 255, 166, 0.55);
+    color: var(--color-teal);
+    border: 1px solid rgba(32,70,84,0.12);
+    padding: 6px 16px; border-radius: var(--radius-pill);
+    font-weight: 600; font-size: 0.8rem;
+}
+.section-heading-ornate { position: relative; display: inline-block; font-family: var(--font-heading); }
+.section-heading-ornate::after { content: '❧ ❦ ❧'; display: block; font-size: 1rem; color: var(--color-sky); letter-spacing: 6px; margin-top: 5px; }
+.drop-cap {
+    float: left; font-family: var(--font-heading);
+    font-size: 3rem; line-height: 0.9;
+    padding-top: 6px; padding-right: 10px; padding-left: 3px;
+    color: var(--color-teal); font-weight: 700;
+}
+.budaya-item { transition: all 0.3s ease; }
+
+@media (max-width: 991px) { .ornate-frame-circle { width: 200px; height: 200px; } }
+@media (max-width: 767px) {
+    .page-hero { padding: 130px 0 40px; }
+    .ornate-frame-circle { width: 180px; height: 180px; }
+}

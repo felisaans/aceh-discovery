@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budaya & Tradisi Aceh — Aceh Discovery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/budaya.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top aceh-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <div class="brand-icon"><i class="fa-solid fa-compass"></i></div>
+                <span class="brand-text">Aceh Discovery</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-3 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kuliner.html">Kuliner</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="budaya.html">Budaya & Tradisi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="destinasi.html">Destinasi Wisata</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-aceh-outline text-decoration-none py-2 px-4" href="login.html">
+                            <i class="fa-solid fa-user me-2"></i>Masuk
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-tag-pill">
+                <span class="tag-dot"></span>
+                <span>Warisan Luhur Serambi Mekkah</span>
+            </div>
+            <h1>Pusaka <em>Budaya</em> & Kesenian Aceh.</h1>
+            <p class="lead-custom">
+                Menyelami nilai filosofis, tarian tradisional, adat istiadat, dan warisan luhur masyarakat Serambi Mekkah.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <div class="container my-5">
+
+        <!-- FILTER -->
+        <div class="custom-card-bg p-4 mb-5">
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" id="inputPencarianBudaya" class="form-control" placeholder="Cari tarian, rumah adat, tradisi, atau kesenian...">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select id="filterKategoriBudaya" class="form-select">
+                        <option value="">Semua Kategori Budaya</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider Heading -->
+        <div class="text-center mb-5">
+            <h3 class="fw-bold display-6 mb-2 text-teal font-editorial">Jelajah Warisan Leluhur</h3>
+            <div class="ornate-divider" style="max-width: 320px; margin: 0 auto;">
+                <span class="text-teal"><i class="fa-solid fa-seedling"></i></span>
+            </div>
+        </div>
+
+        <!-- Diisi dinamis oleh budaya.js dari Supabase -->
+        <div id="daftarBudayaContainer"></div>
+
+        <p class="text-center text-muted py-5 d-none" id="budayaKosong">Tidak ada budaya/tradisi yang cocok dengan pencarianmu.</p>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="aceh-footer">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="brand-icon"><i class="fa-solid fa-compass"></i></div>
+                        <span class="brand-text text-white">Aceh Discovery</span>
+                    </div>
+                    <p class="small opacity-75 mb-0">Platform digital eksplorasi pariwisata, seni kebudayaan, dan kekayaan tradisi kuliner Serambi Mekkah.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-heading">Navigasi</h6>
+                    <ul class="list-unstyled footer-links mb-0">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="kuliner.html">Kuliner</a></li>
+                        <li><a href="budaya.html">Budaya & Tradisi</a></li>
+                        <li><a href="destinasi.html">Destinasi Wisata</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h6 class="footer-heading">Budaya Populer</h6>
+                    <ul class="list-unstyled footer-links mb-0">
+                        <li><a href="budaya.html?q=saman">Tari Saman</a></li>
+                        <li><a href="budaya.html?q=rumoh">Rumoh Aceh</a></li>
+                        <li><a href="budaya.html?q=peusijuek">Peusijuek</a></li>
+                        <li><a href="budaya.html?q=rapai">Rapai Geleng</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="footer-heading">Ikuti Kami</h6>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary border-opacity-25 pt-4 text-center small opacity-50">
+                &copy; 2026 Bit2Bit. RPL Studio.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="assets/js/pages/budaya.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* ==========================================================================
+   KULINER — editorial list dengan organic blob image (redesign terbaru)
+   Token, navbar, tombol, footer bersama ada di style.css
+   ========================================================================== */
+
+/* HERO */
+.hero-banner {
+    padding: 150px 0 70px;
+    background: radial-gradient(circle at 80% 20%, var(--color-sky-light) 0%, var(--color-mist) 60%);
+    text-align: center;
+    border-radius: 0 0 40px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-tag-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background-color: var(--color-white); padding: 8px 20px;
+    border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600;
+    color: var(--color-teal); box-shadow: 0 4px 20px rgba(32,70,84,0.06);
+    border: 1px solid rgba(32,70,84,0.08); margin-bottom: 24px;
+}
+.tag-dot { width: 8px; height: 8px; background-color: var(--color-meadow); border: 1px solid var(--color-teal); border-radius: 50%; }
+.hero-banner h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+    font-weight: 700; color: var(--color-teal);
+    line-height: 1.15; margin-bottom: 20px;
+}
+.hero-banner h1 em {
+    font-style: italic;
+    background: linear-gradient(120deg, var(--color-teal) 0%, var(--color-meadow) 100%);
+    background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-banner p { color: var(--text-muted); font-size: 1.05rem; max-width: 640px; margin: 0 auto; }
+
+/* EDITORIAL ROW — blob shapes */
+.editorial-row { position: relative; padding: 40px 0; }
+.editorial-row.border-bottom { border-bottom: 1px dashed rgba(32,70,84,0.12) !important; }
+.organic-shape-container { position: relative; display: flex; justify-content: center; align-items: center; min-height: 360px; }
+.organic-blob {
+    position: absolute; width: 360px; height: 360px;
+    background: var(--blob-sky);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    z-index: 1; transition: all 0.5s ease;
+}
+.organic-blob.coral { background: var(--blob-meadow); border-radius: 41% 59% 43% 57% / 51% 39% 61% 49%; }
+.editorial-img {
+    width: 320px; height: 320px; object-fit: cover;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    position: relative; z-index: 2;
+    box-shadow: 0 15px 35px rgba(32,70,84,0.15);
+    border: 6px solid var(--color-white);
+    transition: transform 0.4s ease;
+}
+.editorial-img:hover { transform: scale(1.03) rotate(1deg); }
+.editorial-content { z-index: 3; position: relative; }
+.badge-kategori {
+    display: inline-block;
+    background: rgba(202, 255, 166, 0.55);
+    color: var(--color-teal);
+    border: 1px solid rgba(32,70,84,0.12);
+    padding: 6px 16px; border-radius: var(--radius-pill);
+    font-weight: 600; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+.editorial-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 700; color: var(--color-teal);
+    line-height: 1.2; margin-bottom: 14px;
+}
+
+@media (max-width: 991px) {
+    .organic-blob { width: 280px; height: 280px; }
+    .editorial-img { width: 260px; height: 260px; }
+    .organic-shape-container { min-height: 300px; margin-top: 20px; }
+}
+@media (max-width: 767px) {
+    .organic-blob { width: 220px; height: 220px; }
+    .editorial-img { width: 200px; height: 200px; }
+    .organic-shape-container { min-height: 240px; }
+    .hero-banner { padding: 130px 0 50px; }
+}

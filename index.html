@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceh Discovery — Portal Eksplorasi Wisata, Kuliner & Warisan Budaya Aceh</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/beranda.css">
+</head>
+<body class="aceh-theme">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top aceh-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <div class="brand-icon"><i class="fa-solid fa-compass"></i></div>
+                <span class="brand-text">Aceh Discovery</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-4 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kuliner.html">Kuliner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="budaya.html">Budaya & Tradisi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="destinasi.html">Destinasi Wisata</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-aceh-outline text-decoration-none py-2 px-4" href="login.html">
+                            <i class="fa-solid fa-user me-2"></i>Masuk
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-editorial">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="hero-tag-pill">
+                        <span class="tag-dot"></span>
+                        <span>Portal Penjelajahan Serambi Mekkah</span>
+                    </div>
+                    <h1 class="hero-heading">
+                        Jelajahi <em>Cita Rasa</em> & Warisan Abadi Tanah Aceh.
+                    </h1>
+                    <p class="hero-description">
+                        Sebuah ruang kurasi untuk menemukan rempah otentik, magisnya tarian tradisi UNESCO, hingga lanskap pesisir dan dataran tinggi nusantara.
+                    </p>
+                    <form action="kuliner.html" method="GET" class="search-box-container mb-4">
+                        <div class="input-group search-box-pill">
+                            <span class="input-group-text bg-transparent border-0 text-teal ps-2">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <input type="text" name="q" class="form-control" placeholder="Cari Mie Aceh, Tari Saman, Sabang, Gayo...">
+                            <button type="submit" class="btn btn-aceh-primary">Telusuri</button>
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center gap-4 pt-2">
+                        <div>
+                            <div class="h4 font-editorial fw-bold m-0 text-teal">23+</div>
+                            <small class="text-muted">Kabupaten & Kota</small>
+                        </div>
+                        <div class="vr opacity-25" style="height: 30px;"></div>
+                        <div>
+                            <div class="h4 font-editorial fw-bold m-0 text-teal">100+</div>
+                            <small class="text-muted">Kuliner Otentik</small>
+                        </div>
+                        <div class="vr opacity-25" style="height: 30px;"></div>
+                        <div>
+                            <div class="h4 font-editorial fw-bold m-0 text-teal">UNESCO</div>
+                            <small class="text-muted">Warisan Dunia</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual-container">
+                        <div class="hero-main-frame">
+                            <img src="https://www.indonesia.travel/link/96ec3d7ac046474e8c435d03d60887ec.aspx" alt="Masjid Raya Baiturrahman Aceh">
+                        </div>
+                        <div class="hero-badge-top">
+                            <i class="fa-solid fa-location-dot text-teal me-2"></i>Banda Aceh
+                        </div>
+                        <div class="hero-floating-card">
+                            <div class="floating-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Kopi Gayo & Sanger</h6>
+                                <p class="small text-muted m-0">Aroma komoditas dunia dari dataran tinggi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERITA & BERITA TERBARU (dinamis dari Supabase, dipertahankan dari desain lama) -->
+    <section class="section-berita container">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <span class="text-uppercase tracking-wider text-teal fw-bold small">Kabar Terkini</span>
+                <h3 class="fw-bold font-editorial m-0 mt-1">Cerita & Berita Terbaru</h3>
+            </div>
+        </div>
+        <div class="row g-4" id="beritaContainer"></div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section-featured-stories">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-7">
+                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Sorotan Editorial</span>
+                    <h2 class="font-editorial display-6 fw-bold mt-2">Cerita Utama dari Aceh</h2>
+                    <p class="text-muted">Eksplorasi tiga pilar utama yang membentuk identitas dan keharuman Tanah Rencong.</p>
+                </div>
+            </div>
+
+            <div class="featured-block">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <div class="featured-img-frame">
+                            <span class="badge-featured-category">Destinasi Ikonik</span>
+                            <img src="https://cdn.ajnn.net/files/images/archives/20230704-danau-laut-tawar-dengan.jpg" alt="Gayo">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ps-lg-5">
+                        <div class="featured-meta">
+                            <span><i class="fa-solid fa-map-pin text-teal"></i> Aceh Tengah</span>
+                            <span><i class="fa-solid fa-star text-warning"></i> 4.9</span>
+                        </div>
+                        <h3 class="featured-title">Magis Pesona Danau Lut Tawar & Kebun Kopi Dataran Tinggi Gayo</h3>
+                        <p class="featured-excerpt">
+                            Terletak di ketinggian 1.200 mdpl, Gayo menyajikan hamparan danau anggun dikelilingi perbukitan hijau tempat tumbuhnya salah satu varietas kopi Arabika terbaik di dunia.
+                        </p>
+                        <a href="destinasi.html" class="btn btn-aceh-primary">
+                            Jelajahi Gayo <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-block">
+                <div class="row align-items-center g-4 flex-lg-row-reverse">
+                    <div class="col-lg-6">
+                        <div class="featured-img-frame">
+                            <span class="badge-featured-category">Warisan Kuliner</span>
+                            <img src="https://bayoranteknik.co.id/wp-content/uploads/2022/01/165704259_2877835065870314_6503201259488200177_n.jpg" alt="Mie Aceh">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pe-lg-5">
+                        <div class="featured-meta">
+                            <span><i class="fa-solid fa-utensils text-teal"></i> Banda Aceh</span>
+                            <span><i class="fa-solid fa-fire text-teal"></i> Kaya Rempah</span>
+                        </div>
+                        <h3 class="featured-title">Simfoni 16 Rempah Rahasia dalam Cita Rasa Mie Aceh Otentik</h3>
+                        <p class="featured-excerpt">
+                            Perpaduan mie tebal kenyal berpadu kuah kari pekat bertabur kepiting segar, mencerminkan jejak jalur rempah perdagangan dunia masa lampau.
+                        </p>
+                        <a href="kuliner-detail.html?slug=mie-aceh" class="btn btn-aceh-accent">
+                            Resep & Sejarah <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-block mb-0">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <div class="featured-img-frame">
+                            <span class="badge-featured-category accent-sky">UNESCO Heritage</span>
+                            <img src="https://asset.kompas.com/crops/ZDZrVGeJ9FswM70k2Fbn0gW310A=/0x0:780x520/1200x800/data/photo/2021/06/29/60dacbf4238f5.jpg" alt="Tari Saman">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ps-lg-5">
+                        <div class="featured-meta">
+                            <span><i class="fa-solid fa-masks-theater text-teal"></i> Gayo Lues</span>
+                            <span><i class="fa-solid fa-certificate text-teal"></i> UNESCO</span>
+                        </div>
+                        <h3 class="featured-title">Harmoni Ribuan Tangan dalam Ritme Keagungan Tari Saman</h3>
+                        <p class="featured-excerpt">
+                            Dikenal sebagai "Tari Seribu Tangan", pertunjukan tanpa alat musik ini mengandalkan tepukan dada dan gerakan serentak nan dinamis.
+                        </p>
+                        <a href="budaya.html" class="btn btn-aceh-outline">
+                            Pelajari Filosofi <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCOVER: KULINER POPULER (dinamis dari Supabase) -->
+    <section class="section-discover">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
+                <div>
+                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Rasa Otentik</span>
+                    <h2 class="font-editorial display-6 fw-bold m-0">Kuliner Populer Aceh</h2>
+                </div>
+                <a href="kuliner.html" class="btn btn-aceh-outline">Semua Kuliner</a>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mb-5" id="filterDaerahChips"></div>
+
+            <div class="row g-4" id="kulinerPopulerContainer"></div>
+        </div>
+    </section>
+
+    <!-- DISCOVER: BUDAYA & TRADISI PILIHAN (dinamis dari Supabase) -->
+    <section class="section-discover-budaya">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
+                <div>
+                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Warisan Leluhur</span>
+                    <h2 class="font-editorial display-6 fw-bold m-0">Budaya & Tradisi Pilihan</h2>
+                </div>
+                <a href="budaya.html" class="btn btn-aceh-outline">Semua Budaya</a>
+            </div>
+
+            <div class="row g-4" id="budayaPilihanContainer"></div>
+        </div>
+    </section>
+
+    <!-- EDITORIAL IDENTITY -->
+    <div class="container">
+        <section class="section-editorial-identity">
+            <div class="row align-items-center g-5 px-4 px-md-5">
+                <div class="col-lg-6">
+                    <div class="collage-wrapper">
+                        <div class="collage-main">
+                            <img src="https://posaceh.com/wp-content/uploads/2025/12/Sambut-tamu.jpg" alt="Peumulia jamee">
+                        </div>
+                        <div class="collage-sub">
+                            <img src="https://www.acehtimes.co.id/wp-content/uploads/2025/09/SnapInsta.to_464023795_914088380594254_1616973902015029522_n-1000x600.jpg" alt="Kedai kopi aceh">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-uppercase tracking-wider text-meadow fw-bold small">Identitas Kebudayaan</span>
+                    <h2 class="font-editorial display-6 fw-bold text-white mt-2 mb-4">
+                        Lebih dari Sekadar Destinasi Wisata
+                    </h2>
+                    <p class="text-light opacity-75 mb-4">
+                        Aceh adalah ruang perjumpaan nilai-nilai spiritual, keramahan hangat kedai kopi 24 jam, sejarah kejayaan kesultanan, dan ketangguhan masyarakat yang senantiasa menyambut tamu bagaikan keluarga sendiri.
+                    </p>
+                    <div class="identity-bullet">
+                        <div class="identity-bullet-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Mulia Poe Teumpeun (Muliakan Tamu)</h6>
+                            <p class="small text-light opacity-75 m-0">Falsafah adat memuliakan setiap musafir.</p>
+                        </div>
+                    </div>
+                    <div class="identity-bullet">
+                        <div class="identity-bullet-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Kultur Seribu Kedai Kopi</h6>
+                            <p class="small text-light opacity-75 m-0">Pusat diskusi & kehangatan sosial.</p>
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <a href="budaya.html" class="btn btn-aceh-accent">
+                            Jelajahi Kebudayaan <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- EXPERIENCE CAROUSEL (Pengalaman Wisatawan, dinamis dari Supabase) -->
+    <section class="section-community">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                <div>
+                    <span class="text-uppercase tracking-wider text-teal fw-bold small">Cerita Penjelajah</span>
+                    <h2 class="font-editorial fw-bold m-0 mt-1">Pengalaman Wisatawan</h2>
+                </div>
+                <button type="button" class="btn btn-aceh-primary" data-bs-toggle="modal" data-bs-target="#modalUnggahPengalaman">
+                    <i class="fa-solid fa-camera me-2"></i>Bagikan Pengalaman Anda
+                </button>
+            </div>
+
+            <div id="carouselPengalaman" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carouselPengalamanInner"></div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <button class="carousel-nav-btn" type="button" data-bs-target="#carouselPengalaman" data-bs-slide="prev" aria-label="Previous">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-nav-btn" type="button" data-bs-target="#carouselPengalaman" data-bs-slide="next" aria-label="Next">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-closing-cta">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-uppercase tracking-wider text-meadow fw-bold small">Mulai Petualangan Anda</span>
+                    <h2 class="cta-heading mt-2">Siap untuk Menjelajahi Keajaiban Aceh?</h2>
+                    <p class="lead opacity-90 mb-5 text-light">
+                        Temukan rute perjalanan kuliner terbaik, tempat bersejarah, dan pengalaman kebudayaan otentik bersama Aceh Discovery.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="destinasi.html" class="btn btn-lg btn-aceh-accent px-5 py-3 fs-6">
+                            Mulai Eksplorasi Sekarang
+                        </a>
+                        <a href="kuliner.html" class="btn btn-lg btn-aceh-outline border-white text-white px-5 py-3 fs-6">
+                            Jelajahi Kuliner
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL UNGGAH PENGALAMAN -->
+    <div class="modal fade" id="modalUnggahPengalaman" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4 p-3">
+                <div class="modal-header border-0">
+                    <div>
+                        <h5 class="modal-title font-editorial fw-bold text-teal mb-1">Bagikan Cerita Wisata Anda</h5>
+                        <p class="small text-muted m-0">Cerita Anda akan muncul di carousel pengalaman wisatawan.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Kartu info akun (tampil otomatis kalau sudah masuk) -->
+                    <div id="userInfoCard" class="avatar-info-card mb-4 d-none">
+                        <img id="userAvatarDisplay"
+                             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+                             alt="Avatar">
+                        <div class="flex-grow-1">
+                            <h6 id="userNameDisplay" class="fw-bold mb-0">Pengguna</h6>
+                            <p class="small text-muted mb-0">Nama akan otomatis dipakai sebagai nama pengunggah.</p>
+                        </div>
+                    </div>
+
+                    <form id="formPengalaman" novalidate>
+
+                        <!-- NAMA (hanya tampil kalau belum masuk, karena unggah pengalaman tetap terbuka untuk publik/anonim) -->
+                        <div class="mb-3" id="grupNamaPengalaman">
+                            <label class="form-label small fw-semibold">Nama Anda <span class="text-danger">*</span></label>
+                            <input type="text" id="inputNamaPengalaman" class="form-control rounded-3" placeholder="Nama kamu" required>
+                        </div>
+
+                        <!-- DESTINASI & RATING -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-8">
+                                <label class="form-label small fw-semibold">Destinasi yang Dikunjungi <span class="text-danger">*</span></label>
+                                <input type="text" id="inputDestinasiPengalaman" class="form-control rounded-3"
+                                       placeholder="Misal: Danau Lut Tawar, Takengon" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Rating <span class="text-danger">*</span></label>
+                                <select id="inputRatingPengalaman" class="form-select rounded-3" required>
+                                    <option value="5" selected>★★★★★ (5.0)</option>
+                                    <option value="4">★★★★☆ (4.0)</option>
+                                    <option value="3">★★★☆☆ (3.0)</option>
+                                    <option value="2">★★☆☆☆ (2.0)</option>
+                                    <option value="1">★☆☆☆☆ (1.0)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- UPLOAD FOTO DESTINASI -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">
+                                Foto Destinasi <span class="text-danger">*</span>
+                            </label>
+                            <input type="file" id="inputFotoPengalaman" name="foto_file"
+                                   accept="image/png, image/jpeg, image/webp, image/jpg"
+                                   class="d-none" required>
+
+                            <div id="uploadDropzone" class="upload-dropzone" role="button" tabindex="0">
+                                <i class="fa-solid fa-cloud-arrow-up d-block"></i>
+                                <div class="fw-semibold">Klik untuk pilih foto, atau seret & lepas di sini</div>
+                                <small class="text-muted">Format: JPG, PNG, WEBP — Maks 5MB</small>
+                            </div>
+
+                            <!-- Preview file terpilih -->
+                            <div id="filePreview" class="mt-3 d-none">
+                                <div id="filePreviewBg" class="rounded-3 border overflow-hidden position-relative"
+                                     style="height: 180px; background-size: cover; background-position: center;">
+                                    <button type="button" id="removeFileBtn"
+                                            class="btn btn-sm btn-light position-absolute"
+                                            style="top: 10px; right: 10px; border-radius: 50%; width: 34px; height: 34px; padding: 0;">
+                                        <i class="fa-solid fa-xmark text-danger"></i>
+                                    </button>
+                                </div>
+                                <p class="small text-muted mt-2 mb-0">
+                                    <i class="fa-solid fa-file-image me-1"></i>
+                                    <span id="fileName">foto.jpg</span> —
+                                    <span id="fileSize">0 KB</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CERITA -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Cerita Pengalaman <span class="text-danger">*</span></label>
+                            <textarea id="inputTeksPengalaman" class="form-control rounded-3" rows="4"
+                                      placeholder="Bagikan momen paling berkesan selama di Aceh..." required></textarea>
+                        </div>
+
+                        <!-- PROGRESS UPLOAD -->
+                        <div id="uploadProgress" class="mb-3 d-none">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <i class="fa-solid fa-spinner fa-spin text-teal"></i>
+                                <small class="fw-semibold" id="uploadStatusText">Mengunggah...</small>
+                            </div>
+                            <div class="progress" style="height: 6px;">
+                                <div id="uploadProgressBar" class="progress-bar"
+                                     style="width: 0%; background-color: var(--color-teal);"></div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-aceh-outline flex-fill rounded-pill py-2" data-bs-dismiss="modal">
+                                Batal
+                            </button>
+                            <button type="submit" id="submitBtn" class="btn btn-aceh-primary flex-fill rounded-pill py-2">
+                                <i class="fa-solid fa-paper-plane me-2"></i>Kirim Cerita
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="aceh-footer">
+        <div class="container">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="brand-icon"><i class="fa-solid fa-compass"></i></div>
+                        <span class="brand-text text-white">Aceh Discovery</span>
+                    </div>
+                    <p class="small opacity-75">
+                        Platform media digital eksplorasi pariwisata, seni kebudayaan, dan kekayaan tradisi kuliner Serambi Mekkah.
+                    </p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="footer-heading">Navigasi</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="kuliner.html">Kuliner Otentik</a></li>
+                        <li><a href="budaya.html">Budaya & Tradisi</a></li>
+                        <li><a href="destinasi.html">Destinasi Wisata</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h6 class="footer-heading">Fitur Utama</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="login.html">Masuk / Daftar</a></li>
+                        <li><a href="admin/index.html">Dashboard Admin</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="footer-heading">Media Sosial</h6>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="text-white opacity-75"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary border-opacity-25 pt-4 text-center small opacity-50">
+                &copy; 2026 Bit2Bit. RPL Studio.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="assets/js/pages/beranda.js"></script>
+</body>
+</html>

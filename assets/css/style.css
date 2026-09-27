@@ -1,0 +1,172 @@
+/* ==========================================================================
+   ACEH DISCOVERY — SHARED DESIGN SYSTEM (dipakai di semua halaman)
+   Palet & token diambil dari redesign terbaru (DeepSeek), diekstrak ke sini
+   supaya tidak diduplikasi di tiap file CSS per halaman.
+   ========================================================================== */
+:root {
+    --color-mist: #F7F9E1;
+    --color-teal: #204654;
+    --color-sky: #A9E0F1;
+    --color-meadow: #CAFFA6;
+    --color-teal-dark: #15303B;
+    --color-teal-soft: #305B6C;
+    --color-sky-light: #EBF7FC;
+    --color-white: #FFFFFF;
+    --text-dark: #204654;
+    --text-muted: #4F6770;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --radius-md: 24px;
+    --radius-lg: 36px;
+    --radius-pill: 50px;
+    --shadow-soft: 0 16px 36px rgba(32, 70, 84, 0.07);
+    --shadow-hover: 0 24px 48px rgba(32, 70, 84, 0.14);
+    --blob-sky: rgba(169, 224, 241, 0.55);
+    --blob-meadow: rgba(202, 255, 166, 0.55);
+
+    /* alias warna lama (dipertahankan supaya style lama yang belum sempat
+       dimigrasikan penuh tetap tampil konsisten) */
+    --primary-color: var(--color-teal);
+    --secondary-color: var(--color-sky);
+    --accent-color: var(--color-meadow);
+    --bg-color: var(--color-mist);
+}
+
+body {
+    background-color: var(--color-mist);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+h1, h2, h3, .font-editorial { font-family: var(--font-heading); }
+.text-teal { color: var(--color-teal) !important; }
+.text-meadow { color: var(--color-meadow) !important; }
+.text-sky { color: var(--color-sky) !important; }
+
+/* ---------- NAVBAR ---------- */
+.aceh-navbar {
+    background-color: rgba(247, 249, 225, 0.92);
+    backdrop-filter: blur(16px);
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(32, 70, 84, 0.08);
+}
+.brand-icon {
+    width: 44px; height: 44px;
+    background-color: var(--color-teal);
+    color: var(--color-meadow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem;
+}
+.brand-text {
+    font-family: var(--font-heading);
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--color-teal);
+}
+.aceh-navbar .nav-link {
+    color: var(--text-dark); font-weight: 500;
+    font-size: 0.95rem; padding: 0.5rem 1rem;
+}
+.aceh-navbar .nav-link:hover,
+.aceh-navbar .nav-link.active { color: var(--color-teal); font-weight: 700; }
+
+/* ---------- BUTTONS ---------- */
+.btn-aceh-primary, .btn-primary-custom {
+    background-color: var(--color-teal);
+    color: var(--color-mist); border: none;
+    border-radius: var(--radius-pill);
+    padding: 12px 28px; font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-aceh-primary:hover, .btn-primary-custom:hover {
+    background-color: var(--color-teal-dark);
+    color: var(--color-meadow);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(32, 70, 84, 0.2);
+}
+.btn-aceh-outline {
+    border: 1.5px solid var(--color-teal);
+    color: var(--color-teal); background: transparent;
+    border-radius: var(--radius-pill);
+    padding: 12px 28px; font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-aceh-outline:hover { background-color: var(--color-teal); color: var(--color-meadow); }
+.btn-aceh-accent {
+    background-color: var(--color-meadow);
+    color: var(--color-teal); border: none;
+    border-radius: var(--radius-pill);
+    padding: 12px 28px; font-weight: 700;
+    transition: all 0.3s ease;
+}
+.btn-aceh-accent:hover { background-color: #b3f78a; color: var(--color-teal-dark); transform: translateY(-2px); }
+
+/* ---------- REGION CHIPS (dipakai components.js -> pasangChipDaerah) ---------- */
+.region-chip {
+    background-color: var(--color-white);
+    border: 1.5px solid rgba(32, 70, 84, 0.18);
+    color: var(--text-dark);
+    padding: 10px 24px; border-radius: var(--radius-pill);
+    font-size: 0.9rem; font-weight: 600;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.region-chip:hover,
+.region-chip.active {
+    background-color: var(--color-teal);
+    color: var(--color-meadow);
+    border-color: var(--color-teal);
+    box-shadow: 0 6px 18px rgba(32, 70, 84, 0.15);
+}
+
+/* ---------- FOOTER ---------- */
+.aceh-footer {
+    background-color: var(--color-teal-dark);
+    color: rgba(247, 249, 225, 0.75);
+    padding: 70px 0 30px; font-size: 0.9rem;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    margin-top: 60px;
+}
+.footer-heading {
+    color: var(--color-mist);
+    font-family: var(--font-heading);
+    font-weight: 700; margin-bottom: 20px;
+}
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: rgba(247, 249, 225, 0.7); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--color-meadow); }
+
+/* ---------- FORM UMUM (dipakai login.html & filter bar halaman lain) ---------- */
+.filter-section, .custom-card-bg {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(32, 70, 84, 0.08);
+}
+.filter-section .form-control, .custom-card-bg .form-control,
+.filter-section .form-select, .custom-card-bg .form-select {
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(32, 70, 84, 0.12);
+    padding: 12px 20px; color: var(--color-teal); font-size: 0.95rem;
+}
+.filter-section .form-control:focus, .custom-card-bg .form-control:focus,
+.filter-section .form-select:focus, .custom-card-bg .form-select:focus {
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 3px rgba(169, 224, 241, 0.4);
+}
+.filter-section .input-group-text, .custom-card-bg .input-group-text {
+    background: var(--color-white);
+    border: 1px solid rgba(32, 70, 84, 0.12);
+    border-right: none;
+    border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+    color: var(--color-teal); padding-left: 1rem;
+}
+.filter-section .input-group .form-control, .custom-card-bg .input-group .form-control {
+    border-left: none;
+    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+}
+.nav-pills .nav-link { color: var(--text-dark); font-weight: 600; }
+.nav-pills .nav-link.active { background-color: var(--color-teal); color: var(--color-meadow); }
