@@ -118,7 +118,7 @@ if (!siap) {
             badge: `<i class="fa-solid fa-masks-theater me-1"></i> ${esc(b.kategori?.nama_kategori || 'Budaya')}`,
             tipe: 'budaya',
             lokasi: b.daerah?.nama_daerah || 'Seluruh Aceh', judul: b.nama, deskripsi: b.deskripsi, gambar: b.gambar,
-            tombolTeks: 'Pelajari Filosofi'
+            tombolTeks: 'Pelajari Budaya'
           })}
         </div>`).join('') : '<p class="text-center text-muted py-4 w-100">Belum ada data budaya.</p>';
 
